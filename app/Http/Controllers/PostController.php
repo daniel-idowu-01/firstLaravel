@@ -40,7 +40,7 @@ class PostController extends Controller
         if($post->user_id !== auth()->id()) {
             return redirect('/');
         }
-        
+
         $incomingData = $request->validate([
             'title' => 'required|string',
             'body' => 'required|string'
@@ -49,6 +49,17 @@ class PostController extends Controller
         $incomingData['title'] = strip_tags($incomingData['title']);
         $incomingData['body'] = strip_tags($incomingData['body']);
         $post->update($incomingData);
+
+        return redirect('/');
+    }
+
+    //
+    public function deletePost(Post $post)
+    {
+        if($post->user_id === auth()->id()) {
+            $post->delete();
+        }
+
 
         return redirect('/');
     }
