@@ -23,6 +23,22 @@ class UserController extends Controller
         return redirect('/');
     }
 
+    public function login(Request $request)
+    {
+        $incomingData = $request->validate([
+            'loginemail' => 'required|email',
+            'loginpassword' => 'required|string|min:8'
+        ]);
+
+        if (!auth()->attempt(['email' => $incomingData['loginemail'], 'password' => $incomingData['loginpassword']])) {
+            return response(['message' => 'Invalid credentials'], 401);
+        }
+
+        $request->session()->regenerate();
+
+        return redirect('/');
+    }
+
     public function logout()
     {
         auth()->logout();

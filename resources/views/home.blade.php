@@ -23,6 +23,15 @@
                 <button type='submit'>Register</button>
             </form>
         </div>
+        <div class="container">
+            <h1>Log In</h1>
+            <form action="/login" method="POST">
+                @csrf
+                <input type="email" name="loginemail" placeholder='email' id="">
+                <input type="password" name="loginpassword" placeholder='password' id="">
+                <button type='submit'>Log In</button>
+            </form>
+        </div>
     @endauth
 </body>
 </html>
