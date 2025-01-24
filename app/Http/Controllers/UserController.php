@@ -17,9 +17,15 @@ class UserController extends Controller
         ]);
 
         $incomingData['password'] = bcrypt($incomingData['password']);
-        User::create($incomingData);
-        $name = $request->input('name');
-        echo "Hello, $name! Your registration is successful!";
-        return "Thank you!";
+        $user = User::create($incomingData);
+        auth()->login($user);
+        
+        return redirect('/');
+    }
+
+    public function logout()
+    {
+        auth()->logout();
+        return redirect('/');
     }
 }
