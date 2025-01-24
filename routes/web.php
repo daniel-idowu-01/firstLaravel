@@ -6,10 +6,11 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
 
 Route::get('/', function () {
-    $posts = [];
-    if(auth()->check()) {
-        $posts = auth()->user()->userPosts()->latest()->get();
-    }
+    // $posts = [];
+    // if(auth()->check()) {
+    //     $posts = auth()->user()->userPosts()->latest()->get();
+    // }
+    $posts = Post::latest()->get();
     return view('home', ['posts' => $posts]);
 });
 
