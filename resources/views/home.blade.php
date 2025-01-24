@@ -12,6 +12,16 @@
             @csrf
             <button type='submit'>Logout</button>
         </form>
+
+        <div>
+            <h1>Create Post</h1>
+            <form action="/create-post" method="POST">
+                @csrf
+                <input type="text" name="title" placeholder='title' id="">
+                <textarea name="body" placeholder='Content...' id=""></textarea>
+                <button type='submit'>Post</button>
+            </form>
+        </div>
     @else
         <div class="container">
             <h1>User Registration</h1>
