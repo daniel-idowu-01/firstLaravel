@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body>
     @auth
@@ -40,12 +41,12 @@
         </div>
     @else
         <div class="container">
-            <h1>User Registration</h1>
+            <h1 class="text-green-500">User Registration</h1>
             <form action="/register" method="POST">
                 @csrf
-                <input type="text" name="name" placeholder='name' id="">
-                <input type="email" name="email" placeholder='email' id="">
-                <input type="password" name="password" placeholder='password' id="">
+                <input class="border mx-2" type="text" name="name" placeholder='name' id="">
+                <input class="border mx-2" type="email" name="email" placeholder='email' id="">
+                <input class="border mx-2" type="password" name="password" placeholder='password' id="">
                 <button type='submit'>Register</button>
             </form>
         </div>
@@ -53,8 +54,8 @@
             <h1>Log In</h1>
             <form action="/login" method="POST">
                 @csrf
-                <input type="email" name="loginemail" placeholder='email' id="">
-                <input type="password" name="loginpassword" placeholder='password' id="">
+                <input class="border mx-2" type="email" name="loginemail" placeholder='email' id="">
+                <input class="border mx-2" type="password" name="loginpassword" placeholder='password' id="">
                 <button type='submit'>Log In</button>
             </form>
         </div>
