@@ -14,10 +14,10 @@
             <a
              href='/'
              class='cursor-pointer'>
-                <img src="" alt="" class='w-7 inline' />
                 <p class='hidden md:inline blackops md:text-2xl translate-x-1 ml-1'>
                     naija<span class='text-bice-blue'>g</span>ist
                 </p>
+                <p  class="md:hidden text-2xl font-bold text-blue-500">N</p>
             </a>    
         </div>
      
@@ -35,7 +35,7 @@
         {{-- Log In --}}
         <div class='flex items-center gap-5'>
             <a
-             href='/login' class='bg-blue-500 text-white px-5 py-2 text- rounded-md text-sm md:text-base'>
+             href='/login' class='bg-blue-500 text-white px-5 py-2 rounded-md text-sm md:text-base hidden md:block'>
               Log In
             </a>
             <svg class='md:hidden cursor-pointer size-6' xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
