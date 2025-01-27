@@ -15,16 +15,20 @@ Route::get('/', function () {
     //     $posts = auth()->user()->userPosts()->latest()->get();
     // }
     $posts = Post::latest()->get();
-    return view('home', ['posts' => $posts]);
+    return view('layouts.app', ['posts' => $posts]);
 });
 
 // auth routes
-Route::get('/login', function() {
-    return view('login');
-});
+// Route::get('/login', function() {
+//     return view('login');
+// });
 
-Route::get('/register', function() {
-    return view('register');
+Route::get('/auth/login', function() {
+    return view('auth.login');
+})->name('login');
+
+Route::get('/auth/register', function() {
+    return view('auth.register');
 });
 
 Route::post('/register', [UserController::class, 'register']);
@@ -47,3 +51,13 @@ Route::post('/create-post', [PostController::class, 'createPost']);
 Route::get('/edit-post/{post}', [PostController::class, 'showEditScreen']);
 Route::put('/edit-post/{post}', [PostController::class, 'updatePost']);
 Route::delete('/delete-post/{post}', [PostController::class, 'deletePost']);
+
+Route::middleware([
+    'auth:sanctum',
+    config('jetstream.auth_session'),
+    'verified',
+])->group(function () {
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
+});
