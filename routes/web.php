@@ -1,9 +1,13 @@
 <?php
 
 use App\Models\Post;
+use App\Mail\NewEmail;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ResetPasswordController;
+use App\Http\Controllers\ForgetPasswordController;
 
 Route::get('/', function () {
     // $posts = [];
@@ -14,6 +18,7 @@ Route::get('/', function () {
     return view('home', ['posts' => $posts]);
 });
 
+// auth routes
 Route::get('/login', function() {
     return view('login');
 });
@@ -26,18 +31,16 @@ Route::post('/register', [UserController::class, 'register']);
 Route::post('/logout', [UserController::class, 'logout']);
 Route::post('/login', [UserController::class, 'login']);
 
-// Password Reset Routes
-Route::get('/forgot-password', [ForgotPasswordController::class, 'showLinkRequestForm'])
-    ->name('password.request');
+// password reset routes
+Route::get('password/reset', [ForgetPasswordController::class, 'showLinkRequestForm'])->name('password.request');
+Route::post('password/email', [ForgetPasswordController::class, 'sendResetLinkEmail'])->name('password.email');
+Route::get('password/reset/{token}', [ResetPasswordController::class, 'showResetForm'])->name('password.reset');
+Route::post('password/reset', [ResetPasswordController::class, 'reset'])->name('password.update');
 
-Route::post('/forgot-password', [ForgotPasswordController::class, 'sendResetLinkEmail'])
-    ->name('password.email');
-
-Route::get('/reset-password/{token}', [ResetPasswordController::class, 'showResetForm'])
-    ->name('password.reset');
-
-Route::post('/reset-password', [ResetPasswordController::class, 'reset'])
-    ->name('password.update');
+Route::get('/testroute', function() {
+    $name = "Daniel";
+    Mail::to('tisiooagptxjiynylr@hthlm.com')->send(new NewEmail($name));
+});
 
 // blog routes
 Route::post('/create-post', [PostController::class, 'createPost']);

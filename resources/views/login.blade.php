@@ -28,7 +28,7 @@
                 <label for="password" class="block text-sm/6 font-medium text-gray-900">Password</label>
                 <div class="text-sm">
                   @if (Route::has('password.request'))
-                    <a href="{{ route('password.request') }}" class="font-semibold text-blue-600 hover:text-blue-500">Forgot password?</a>
+                    <a href="{{ route('password.request') }}" class="font-semibold text-blue-600 hover:text-blue-500 hover:underline">Forgot password?</a>
                   @endif
                 </div>
               </div>

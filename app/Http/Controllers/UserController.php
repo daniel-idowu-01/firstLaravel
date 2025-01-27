@@ -26,11 +26,11 @@ class UserController extends Controller
     public function login(Request $request)
     {
         $incomingData = $request->validate([
-            'loginemail' => 'required|email',
-            'loginpassword' => 'required|string|min:8'
+            'email' => 'required|email',
+            'password' => 'required|string|min:8'
         ]);
 
-        if (!auth()->attempt(['email' => $incomingData['loginemail'], 'password' => $incomingData['loginpassword']])) {
+        if (!auth()->attempt(['email' => $incomingData['email'], 'password' => $incomingData['password']])) {
             return response(['message' => 'Invalid credentials'], 401);
         }
 
