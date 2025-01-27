@@ -53,7 +53,7 @@
     </nav>
 
 
-    @auth
+    {{-- @auth
         <p>You are logged In</p>
         <form action="/logout" method="POST">
             @csrf
@@ -85,26 +85,7 @@
                 </div>
             @endforeach
         </div>
-    @else
-        <div class="container relative top-60">
-            <h1 class="text-green-500">User Registration</h1>
-            <form action="/register" method="POST">
-                @csrf
-                <input class="border mx-2" type="text" name="name" placeholder='name' id="">
-                <input class="border mx-2" type="email" name="email" placeholder='email' id="">
-                <input class="border mx-2" type="password" name="password" placeholder='password' id="">
-                <button type='submit'>Register</button>
-            </form>
-        </div>
-        <div class="container relative top-60">
-            <h1>Log In</h1>
-            <form action="/login" method="POST">
-                @csrf
-                <input class="border mx-2" type="email" name="loginemail" placeholder='email' id="">
-                <input class="border mx-2" type="password" name="loginpassword" placeholder='password' id="">
-                <button type='submit'>Log In</button>
-            </form>
-        </div>
-    @endauth
+    @else 
+    @endauth --}}
 </body>
 </html>
