@@ -7,6 +7,9 @@
     <title>Document</title>
 </head>
 <body>
-    Hello
+    <h2>Reset Your Password</h2>
+    <p>Click the link below to reset your password:</p>
+    <a href="{{ $url }}">Reset Password</a>
+    <p>If you didn't request this, please ignore this email.</p>
 </body>
 </html>

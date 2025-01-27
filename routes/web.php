@@ -31,9 +31,9 @@ Route::get('/auth/register', function() {
     return view('auth.register');
 });
 
-Route::post('/register', [UserController::class, 'register']);
-Route::post('/logout', [UserController::class, 'logout']);
-Route::post('/login', [UserController::class, 'login']);
+Route::post('/register', [UserController::class, 'register'])->name('register');
+Route::post('/logout', [UserController::class, 'logout'])->name('logout');
+Route::post('/login', [UserController::class, 'login'])->name('login');
 
 // password reset routes
 Route::get('password/reset', [ForgetPasswordController::class, 'showLinkRequestForm'])->name('password.request');
