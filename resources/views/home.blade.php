@@ -4,6 +4,7 @@
             <div class="flex items-center gap-2">
                 <img class="w-8 h-8 object-cover rounded-[100%]" src="https://media.gettyimages.com/id/1692571345/photo/madrid-spain-jude-bellingham-of-real-madrid-celebrates-after-scoring-their-sides-first-goal.jpg?s=612x612&w=gi&k=20&c=FvzTaxKFZLTOtuMAPvs709OmQsMSZYD1E9qIovYRYCk=" alt="">
                 <p>Idowu Daniel</p>
+                <p class="opacity-50 text-xs"><span>o</span> 3 mins ago</p>
             </div>
 
             <p class="text-xs font-bold">-AI/ML</p>
