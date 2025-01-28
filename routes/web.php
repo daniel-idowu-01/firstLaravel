@@ -21,23 +21,22 @@ use App\Http\Controllers\ForgetPasswordController;
 //     return view('layouts.app', ['slot' => view('home')]);
 // });
 
+// auth routes
+// Route::get('/auth/login', function() {
+//     return view('auth.login');
+// })->name('login');
+
+// Route::get('/auth/register', function() {
+//     return view('auth.register');
+// });
+
+// Route::post('/register', [UserController::class, 'register'])->name('register');
+// Route::post('/logout', [UserController::class, 'logout'])->name('logout');
+// Route::post('/login', [UserController::class, 'login'])->name('login');
+
 Route::get('/', function () {
     return view('home');
 });
-
-
-// auth routes
-Route::get('/auth/login', function() {
-    return view('auth.login');
-})->name('login');
-
-Route::get('/auth/register', function() {
-    return view('auth.register');
-});
-
-Route::post('/register', [UserController::class, 'register'])->name('register');
-Route::post('/logout', [UserController::class, 'logout'])->name('logout');
-Route::post('/login', [UserController::class, 'login'])->name('login');
 
 // password reset routes
 Route::get('password/reset', [ForgetPasswordController::class, 'showLinkRequestForm'])->name('password.request');
