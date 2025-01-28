@@ -14,15 +14,13 @@ Route::get('/', function () {
     // if(auth()->check()) {
     //     $posts = auth()->user()->userPosts()->latest()->get();
     // }
-    $posts = Post::latest()->get();
-    return view('layouts.app', ['posts' => $posts]);
+    // $posts = Post::latest()->get();
+    // $user = auth()->user();
+
+    return view('layouts.app', ['slot' => view('home')]);
 });
 
 // auth routes
-// Route::get('/login', function() {
-//     return view('login');
-// });
-
 Route::get('/auth/login', function() {
     return view('auth.login');
 })->name('login');
@@ -41,11 +39,6 @@ Route::post('password/email', [ForgetPasswordController::class, 'sendResetLinkEm
 Route::get('password/reset/{token}', [ResetPasswordController::class, 'showResetForm'])->name('password.reset');
 Route::post('password/reset', [ResetPasswordController::class, 'reset'])->name('password.update');
 
-Route::get('/testroute', function() {
-    $name = "Daniel";
-    Mail::to('tisiooagptxjiynylr@hthlm.com')->send(new NewEmail($name));
-});
-
 // blog routes
 Route::post('/create-post', [PostController::class, 'createPost']);
 Route::get('/edit-post/{post}', [PostController::class, 'showEditScreen']);
@@ -60,4 +53,9 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
+});
+
+Route::get('/testroute', function() {
+    $name = "Daniel";
+    Mail::to('tisiooagptxjiynylr@hthlm.com')->send(new NewEmail($name));
 });
