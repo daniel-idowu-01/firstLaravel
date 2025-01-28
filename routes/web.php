@@ -2,6 +2,7 @@
 
 use App\Models\Post;
 use App\Mail\NewEmail;
+use App\View\Components\AppLayout;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
@@ -9,16 +10,21 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\ResetPasswordController;
 use App\Http\Controllers\ForgetPasswordController;
 
-Route::get('/', function () {
-    // $posts = [];
-    // if(auth()->check()) {
-    //     $posts = auth()->user()->userPosts()->latest()->get();
-    // }
-    // $posts = Post::latest()->get();
-    // $user = auth()->user();
+// Route::get('/', function () {
+//     // $posts = [];
+//     // if(auth()->check()) {
+//     //     $posts = auth()->user()->userPosts()->latest()->get();
+//     // }
+//     // $posts = Post::latest()->get();
+//     // $user = auth()->user();
 
-    return view('layouts.app', ['slot' => view('home')]);
+//     return view('layouts.app', ['slot' => view('home')]);
+// });
+
+Route::get('/', function () {
+    return view('home');
 });
+
 
 // auth routes
 Route::get('/auth/login', function() {
