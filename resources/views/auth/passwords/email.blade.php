@@ -11,9 +11,10 @@
     <div class="flex justify-center items-center h-screen w-full">
         <form method="POST" action="{{ route('password.email') }}" class="w-1/4 h-40 flex flex-col justify-between">
             @csrf
-            <p class="text-2xl text-blue-500 text-center font-bold">Reset Password</p>
+            <p class="text-2xl text-blue-500 font-bold">Forgot Password</p>
             <div>
-                <input class="w-full rounded-md" placeholder="Email" type="email" name="email" required autofocus>
+                <label for="email">Email Address</label>
+                <input class="w-full rounded-md" type="email" name="email" required autofocus>
                 <button class="block bg-blue-500 text-white w-full px-4 py-2 rounded-md mt-2" type="submit">Send Reset Link</button>
             </div>
         </form>
