@@ -19,12 +19,17 @@
                 </p>
             </a>
             <div class="rounded-xl bg-black bg-blend-color-burn">
-                <img 
-                    class="w-full h-[30rem] rounded-xl object-contain cursor-pointer transition-transform" 
-                    src="https://media.gettyimages.com/id/1692571345/photo/madrid-spain-jude-bellingham-of-real-madrid-celebrates-after-scoring-their-sides-first-goal.jpg?s=612x612&w=gi&k=20&c=FvzTaxKFZLTOtuMAPvs709OmQsMSZYD1E9qIovYRYCk=" 
-                    alt=""
-                    onclick="openFullscreen(this)"
-                >
+                @if($thread->image)
+                    <img 
+                        class="w-full h-[30rem] rounded-xl object-contain cursor-pointer transition-transform" 
+                        src="{{ asset('storage/' . $thread->image) }}"
+                        alt="Thread Image"
+                        onerror="this.onerror=null; this.src='/images/placeholder.png'; console.log('Image failed to load:', this.src);"
+                        onclick="openFullscreen(this)"
+                    >
+                @else
+                    <p class="text-white p-4">No image available</p>
+                @endif
             </div>
         </section>
         @endforeach

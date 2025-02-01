@@ -14,14 +14,14 @@ class ThreadController extends Controller
             'title' => 'required|string',
             'body' => 'required|string',
             'category_id' => 'required|integer',
-            'image' => 'nullable|image'
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048'
         ]);
 
         $incomingData['title'] = strip_tags($incomingData['title']);
         $incomingData['body'] = strip_tags($incomingData['body']);
         $incomingData['user_id'] = auth()->id();
         $incomingData['slug'] = \Str::slug($incomingData['title']);
-        
+
         // existing slug
         $existingSlug = Thread::where('slug', $incomingData['slug'])->first();
         if($existingSlug) {
@@ -29,7 +29,8 @@ class ThreadController extends Controller
         }
 
         if($request->hasFile('image')) {
-            $incomingData['image'] = $request->file('image')->store('images');
+            $imagePath = $request->file('image')->store('images', 'public');
+            $incomingData['image'] = $imagePath;
         }
 
         $thread = Thread::create($incomingData);
@@ -55,5 +56,23 @@ class ThreadController extends Controller
         $thread->delete();
 
         return redirect('/');
+    }
+
+    // upload image
+    public function upload(Request $request)
+    {
+        $request->validate([
+            'image' => 'required|image|mimes:jpg,jpeg,png|max:2048',
+        ]);
+
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $imageName = time() . '.' . $image->getClientOriginalExtension();
+            $image->storeAs('public/uploads', $imageName); // Save to storage/app/public/uploads
+
+            return response()->json(['message' => 'Image uploaded successfully', 'image' => $imageName]);
+        }
+
+        return response()->json(['error' => 'No image was uploaded'], 400);
     }
 }

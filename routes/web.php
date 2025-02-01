@@ -58,6 +58,7 @@ Route::get('/threads', [ThreadController::class, 'showThreads']);
 Route::get('/thread/{thread}', [ThreadController::class, 'showThread']);
 Route::put('/edit-thread/{thread}', [ThreadController::class, 'updateThread']);
 Route::delete('/delete-thread/{thread}', [ThreadController::class, 'deleteThread']);
+Route::post('/upload', [ThreadController::class, 'uploadImage'])->name('threads.upload');
 
 // 
 Route::middleware([
