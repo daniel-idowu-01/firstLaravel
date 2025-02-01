@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ThreadController;
 use App\Http\Controllers\ResetPasswordController;
 use App\Http\Controllers\ForgetPasswordController;
 
@@ -44,12 +45,18 @@ Route::post('password/email', [ForgetPasswordController::class, 'sendResetLinkEm
 Route::get('password/reset/{token}', [ResetPasswordController::class, 'showResetForm'])->name('password.reset');
 Route::post('password/reset', [ResetPasswordController::class, 'reset'])->name('password.update');
 
-// blog routes
-Route::post('/create-post', [PostController::class, 'createPost']);
-Route::get('/edit-post/{post}', [PostController::class, 'showEditScreen']);
-Route::put('/edit-post/{post}', [PostController::class, 'updatePost']);
-Route::delete('/delete-post/{post}', [PostController::class, 'deletePost']);
+// thread routes
+Route::get('/create-thread', function() {
+    return view('create-thread');
+});
+Route::post('/create-thread', [ThreadController::class, 'createThreed']);
+Route::get('/threads', [ThreadController::class, 'showThreads']);
+// Route::get('/edit-thread/{thread}', [ThreadController::class, 'showEditScreen']);
+Route::get('/thread/{thread}', [ThreadController::class, 'showThread']);
+Route::put('/edit-thread/{thread}', [ThreadController::class, 'updateThread']);
+Route::delete('/delete-thread/{thread}', [ThreadController::class, 'deleteThread']);
 
+// 
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),

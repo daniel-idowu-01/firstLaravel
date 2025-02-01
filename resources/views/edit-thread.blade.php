@@ -7,12 +7,12 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Edit Post</h1>
-    <form action="/edit-post/{{$post->id}}" method="POST">
+    <h1>Edit Thread</h1>
+    <form action="/edit-thread/{{$thread->id}}" method="POST">
         @csrf
         @method('PUT')
-        <input type="text" name="title" value="{{$post->title}}" id="">
-        <textarea name="body" id="">{{$post->body}}</textarea>
+        <input type="text" name="title" value="{{$thread->title}}" id="">
+        <textarea name="body" id="">{{$thread->body}}</textarea>
         <button type='submit'>Update</button>
 </body>
 </html>
