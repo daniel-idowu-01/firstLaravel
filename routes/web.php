@@ -3,6 +3,7 @@
 use App\Models\Post;
 use App\Mail\NewEmail;
 use App\Models\Thread;
+use App\Models\Category;
 use App\View\Components\AppLayout;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
@@ -50,7 +51,9 @@ Route::post('password/reset', [ResetPasswordController::class, 'reset'])->name('
 
 // thread routes
 Route::get('/create-thread', function() {
-    return view('create-thread');
+    $categories = Category::all();
+
+    return view('create-thread', ['categories' => $categories]);
 });
 Route::post('/create-thread', [ThreadController::class, 'createThread']);
 Route::get('/threads', [ThreadController::class, 'showThreads']);

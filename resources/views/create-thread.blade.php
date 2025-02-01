@@ -35,28 +35,17 @@
                     <label for="category_id" class="block text-sm/6 font-medium text-gray-900">Category</label>
                     <div class="mt-2">
                         <select name="category_id" id="category_id" required class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-blue-600 sm:text-sm/6 border">
-                            <option value="1">AI/ML</option>
-                            <option value="2">Web Development</option>
-                            <option value="3">Mobile Development</option>
-                            <option value="4">Game Development</option>
-                            <option value="5">DevOps</option>
-                            <option value="6">Cybersecurity</option>
-                            <option value="7">Data Science</option>
-                            <option value="8">Cloud Computing</option>
-                            <option value="9">IoT</option>
-                            <option value="10">Blockchain</option>
-                            <option value="11">AR/VR</option>
-                            <option value="12">Quantum Computing</option>
-                            <option value="13">Programming</option>
-                            <option value="14">Miscellaneous</option>
-                        </select>
+                            @foreach ($categories as $category)
+                                <option value="{{ $category->id }}">{{ $category->name }}</option>
+                            @endforeach
+                        </select>                        
                     </div>
                 </div>
             
                 <!-- Image Upload -->
                 <div>
                     <label for="image" class="block text-sm/6 font-medium text-gray-900">Choose an image:</label>
-                    <input type="file" name="image" id="image" accept="image/*" required>
+                    <input type="file" name="image" id="image" accept="image/*">
                 </div>
             
                 <div>
