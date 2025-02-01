@@ -14,7 +14,7 @@
             </article>
     
             <a href="/thread/{{$thread->id}}">
-                <h2 class="text-xl font-bold mb-2">{{$thread->title}}</h2>
+                <h2 class="text-xl font-bold mb-2 uppercase">{{$thread->title}}</h2>
                 <p class="mb-1 text-justify">
                     {{$thread->body}}
                 </p>
@@ -28,8 +28,6 @@
                         onerror="this.onerror=null; this.src='/images/placeholder.png'; console.log('Image failed to load:', this.src);"
                         onclick="openFullscreen(this)"
                     >
-                @else
-                    <p class="text-white p-4">No image available</p>
                 @endif
             </div>
         </section>
