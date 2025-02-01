@@ -21,6 +21,12 @@ class ThreadController extends Controller
         $incomingData['body'] = strip_tags($incomingData['body']);
         $incomingData['user_id'] = auth()->id();
         $incomingData['slug'] = \Str::slug($incomingData['title']);
+        
+        // existing slug
+        $existingSlug = Thread::where('slug', $incomingData['slug'])->first();
+        if($existingSlug) {
+            $incomingData['slug'] = $incomingData['slug'] . '-' . time();
+        }
 
         if($request->hasFile('image')) {
             $incomingData['image'] = $request->file('image')->store('images');

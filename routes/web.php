@@ -2,6 +2,7 @@
 
 use App\Models\Post;
 use App\Mail\NewEmail;
+use App\Models\Thread;
 use App\View\Components\AppLayout;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
@@ -36,7 +37,9 @@ use App\Http\Controllers\ForgetPasswordController;
 // Route::post('/login', [UserController::class, 'login'])->name('login');
 
 Route::get('/', function () {
-    return view('home');
+    $threads = Thread::latest()->get();
+
+    return view('home', ['threads' => $threads]);
 });
 
 // password reset routes
@@ -49,7 +52,7 @@ Route::post('password/reset', [ResetPasswordController::class, 'reset'])->name('
 Route::get('/create-thread', function() {
     return view('create-thread');
 });
-Route::post('/create-thread', [ThreadController::class, 'createThreed']);
+Route::post('/create-thread', [ThreadController::class, 'createThread']);
 Route::get('/threads', [ThreadController::class, 'showThreads']);
 // Route::get('/edit-thread/{thread}', [ThreadController::class, 'showEditScreen']);
 Route::get('/thread/{thread}', [ThreadController::class, 'showThread']);
