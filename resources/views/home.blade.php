@@ -1,13 +1,14 @@
 <x-app-layout>
     <main class="flex flex-col gap-5">
+        <span class="mb-10"></span>
         @foreach ($threads as $thread)
-        <section  class="mx-auto w-1/2 p-5 rounded-xl hover:bg-gray-50 hover:border hover:cursor-pointer mt-10 transition-all">
+        <section  class="mx-auto w-1/2 p-5 rounded-xl hover:bg-gray-50 hover:border hover:cursor-pointer transition-all">
             <article class="flex justify-between items-center mb-3">
                 <div class="flex items-center gap-2">
                     <img class="w-5 h-5 object-cover rounded-[100%]" 
                         src="{{ $user->profile_photo_path ?? 'https://img.freepik.com/vecteurs-premium/icones-utilisateur-comprend-icones-utilisateur-symboles-icones-personnes-elements-conception-graphique-qualite-superieure_981536-526.jpg' }}" alt="">
                     <p>{{$thread->user->name}}</p>
-                    <p class="opacity-50 text-xs"><span>o</span> 3 mins ago</p>
+                    <p class="opacity-50 text-xs"><span>o</span> {{$thread->created_at->diffForHumans()}}</p>
                 </div>
     
                 <p class="text-xs font-bold">-{{$thread->category->name}}</p>
@@ -31,6 +32,7 @@
                 @endif
             </div>
         </section>
+        <hr class="w-1/2 mx-auto bg-black bg-opacity-5 h-0.5" />
         @endforeach
     
         {{-- pagination --}}
@@ -42,7 +44,6 @@
             <a href="#" class="bg-black text-white p-2 px-4 rounded-full hover:bg-opacity-80">5</a>
         </div>
 
-        <hr class="w-1/2 mx-auto bg-black bg-opacity-5 h-0.5" />
     </main>
     
     {{-- route to create thread --}}
