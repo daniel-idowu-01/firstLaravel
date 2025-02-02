@@ -31,6 +31,7 @@
                     </div>
                 </div>
             
+                {{-- categories --}}
                 <div>
                     <label for="category_id" class="block text-sm/6 font-medium text-gray-900">Category</label>
                     <div class="mt-2">
