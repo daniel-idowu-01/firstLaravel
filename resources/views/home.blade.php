@@ -53,7 +53,7 @@
         </svg>
     </a>
 
-    <!-- Fullscreen Container -->
+    {{-- Fullscreen Container --}}
     <div 
         id="fullscreenContainer" 
         class="hidden fixed inset-0 bg-black bg-opacity-80 mx-auto z-50"
