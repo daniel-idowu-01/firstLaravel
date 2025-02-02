@@ -17,6 +17,7 @@
             <form class="space-y-6" action="/create-thread" method="POST" enctype="multipart/form-data">
                 @csrf
             
+                {{-- title --}}
                 <div>
                     <label for="title" class="block text-sm/6 font-medium text-gray-900">Title</label>
                     <div class="mt-2">
@@ -24,6 +25,7 @@
                     </div>
                 </div>
             
+                {{-- content --}}
                 <div>
                     <label for="body" class="block text-sm/6 font-medium text-gray-900">Content</label>
                     <div class="mt-2">
