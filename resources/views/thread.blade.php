@@ -3,6 +3,7 @@
         <main class="flex flex-col">
             <span class="mb-10"></span>
             <section  class="mx-auto w-1/2 p-5 rounded-xl">
+                <a href="/" class="block underline mb-5">Back</a>
                 <article class="flex justify-between items-center mb-3">
                     <div class="flex items-center gap-2">
                         <img class="w-5 h-5 object-cover rounded-[100%]" 
@@ -40,7 +41,6 @@
                         @method('DELETE')
                         <button type='submit' class="underline">Delete</button>
                     </form>
-                    <a href="/" class="underline">Back</a>
                 </div>
 
                 <hr class=" my-2 mx-auto bg-black bg-opacity-5 h-0.5" />
@@ -83,7 +83,7 @@
                                                 <div class="p-3 border-l-2">
                                                     <div class="flex gap-3 items-center">
                                                         <img src="{{ $reply->user->profile_photo_path ?? 'https://img.freepik.com/vecteurs-premium/icones-utilisateur-comprend-icones-utilisateur-symboles-icones-personnes-elements-conception-graphique-qualite-superieure_981536-526.jpg' }}"
-                                                            class="object-cover w-8 h-8 rounded-full border-2">
+                                                            class="object-cover w-8 h-8 rounded-full border-2 border-emerald-400">
                                                         <h3 class="font-bold">{{ $reply->user->name }}</h3>
                                                     </div>
                                                     <p class="text-gray-600 mt-2">{{ $reply->content }}</p>
