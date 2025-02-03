@@ -1,6 +1,6 @@
 
     <x-app-layout>
-        <main class="flex flex-col mb-40">
+        <main class="flex flex-col">
             <span class="mb-10"></span>
             <section  class="mx-auto w-1/2 p-5 rounded-xl">
                 <article class="flex justify-between items-center mb-3">
@@ -50,51 +50,52 @@
                     <p class="opacity-40">comments</p>
                     @if($comments->isNotEmpty()) 
                         @foreach($comments as $comment)
-                            <div class="p-3">
-                                <div class="flex gap-3 items-center">
-                                    <img src="{{ $comment->user->profile_photo_path ?? 'https://img.freepik.com/vecteurs-premium/icones-utilisateur-comprend-icones-utilisateur-symboles-icones-personnes-elements-conception-graphique-qualite-superieure_981536-526.jpg' }}"
-                                            class="object-cover w-10 h-10 rounded-full border-2 border-emerald-400  shadow-emerald-400">
-                                    <h3 class="font-bold">
-                                        {{ $comment->user->name }}
-                                    </h3>
-                                </div>
-                                <p class="text-gray-600 mt-2">
-                                    {{ $comment->content }}
-                                </p>
-                                <button onclick="showReplyForm('{{ $comment->id }}')" class="text-blue-500">Reply</button>
-            
-                                <!-- Reply Form (Hidden by default) -->
-                                <form id="replyForm{{ $comment->id }}" 
-                                    action="/thread/{{ $thread->id }}/comment" 
-                                    method="POST" 
-                                    class="hidden ml-8 mt-4">
-                                    @csrf
-                                    <input type="hidden" name="parent_id" value="{{ $comment->id }}">
-                                    <textarea name="content" 
-                                            class="w-full bg-gray-100 rounded border p-2"
-                                            placeholder="Write your reply..."></textarea>
-                                    <input type="submit" class="px-2.5 py-1.5 rounded-md text-white text-sm bg-blue-600" value="Reply">
-                                </form>
-
-                                <!-- Nested Replies -->
-                                @if($comment->replies->count() > 0)
-                                <div class="ml-8 mt-4">
-                                    @foreach($comment->replies as $reply)
-                                        <div class="p-3 border-l-2">
-                                            <div class="flex gap-3 items-center">
-                                                <img src="{{ $reply->user->profile_photo_path ?? 'https://img.freepik.com/vecteurs-premium/icones-utilisateur-comprend-icones-utilisateur-symboles-icones-personnes-elements-conception-graphique-qualite-superieure_981536-526.jpg' }}"
-                                                    class="object-cover w-8 h-8 rounded-full border-2 border-emerald-400  shadow-emerald-400">
-                                                <h3 class="font-bold">{{ $reply->user->name }}</h3>
-                                            </div>
-                                            <p class="text-gray-600 mt-2">{{ $reply->content }}</p>
+                            @if(is_null($comment->parent_id))
+                                <div class="p-3">
+                                    <div class="flex gap-3 items-center">
+                                        <img src="{{ $comment->user->profile_photo_path ?? 'https://img.freepik.com/vecteurs-premium/icones-utilisateur-comprend-icones-utilisateur-symboles-icones-personnes-elements-conception-graphique-qualite-superieure_981536-526.jpg' }}"
+                                            class="object-cover w-10 h-10 rounded-full border-2 border-emerald-400">
+                                        <h3 class="font-bold">{{ $comment->user->name }}</h3>
+                                    </div>
+                                    <p class="text-gray-600 mt-2">{{ $comment->content }}</p>
+                                    
+                                    <button onclick="showReplyForm('{{ $comment->id }}')" class="text-blue-500">Reply</button>
+                                    
+                                    <!-- Reply Form (Hidden by default) -->
+                                    <form id="replyForm{{ $comment->id }}" 
+                                        action="/thread/{{ $thread->id }}/comment" 
+                                        method="POST" 
+                                        class="hidden ml-8 mt-4">
+                                        @csrf
+                                        <input type="hidden" name="parent_id" value="{{ $comment->id }}">
+                                        <textarea name="content" 
+                                                class="w-full bg-gray-100 rounded border p-2"
+                                                placeholder="Write your reply..."></textarea>
+                                        <button type="submit" class="mt-2 px-4 py-1 bg-blue-500 text-white rounded">
+                                            Submit Reply
+                                        </button>
+                                    </form>
+                                    
+                                    <!-- Nested Replies -->
+                                    @if($comment->replies->count() > 0)
+                                        <div class="ml-8 mt-4">
+                                            @foreach($comment->replies as $reply)
+                                                <div class="p-3 border-l-2">
+                                                    <div class="flex gap-3 items-center">
+                                                        <img src="{{ $reply->user->profile_photo_path ?? 'https://img.freepik.com/vecteurs-premium/icones-utilisateur-comprend-icones-utilisateur-symboles-icones-personnes-elements-conception-graphique-qualite-superieure_981536-526.jpg' }}"
+                                                            class="object-cover w-8 h-8 rounded-full border-2">
+                                                        <h3 class="font-bold">{{ $reply->user->name }}</h3>
+                                                    </div>
+                                                    <p class="text-gray-600 mt-2">{{ $reply->content }}</p>
+                                                </div>
+                                            @endforeach
                                         </div>
-                                    @endforeach
+                                    @endif
                                 </div>
                             @endif
-                            </div>
                         @endforeach
                     @else
-                        <p class="text-gray-600 mt-2">No comments</p>
+                        <p class="text-gray-600">No comments yet.</p>
                     @endif
 
                     {{-- add comment box --}}
