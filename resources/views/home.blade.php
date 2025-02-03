@@ -36,7 +36,7 @@
         @endforeach
     
         {{-- pagination --}}
-        <div class="flex justify-center gap-5 mt-10">
+        <div class="flex justify-center gap-5 my-10">
             <a href="#" class="bg-black text-white p-2 px-4 rounded-full hover:bg-opacity-80">1</a>
             <a href="#" class="bg-black text-white p-2 px-4 rounded-full hover:bg-opacity-80">2</a>
             <a href="#" class="bg-black text-white p-2 px-4 rounded-full hover:bg-opacity-80">3</a>

@@ -71,7 +71,7 @@
                                         <textarea name="content" 
                                                 class="w-full bg-gray-100 rounded border p-2"
                                                 placeholder="Write your reply..."></textarea>
-                                                <input type="submit" class="px-2.5 py-1.5 rounded-md text-white text-sm bg-blue-600" value="Reply">
+                                                <input type="submit" class="px-2.5 py-1.5 rounded-md text-white text-sm bg-black" value="Reply">
                                     </form>
                                     
                                     <!-- Nested Replies -->
@@ -103,7 +103,7 @@
                             <textarea name="content" placeholder="comment" class="w-full bg-gray-100 rounded border border-gray-400 leading-normal resize-none h-20 py-2 px-3 font-medium placeholder-gray-700 focus:outline-none focus:bg-white"></textarea>
                         </div>
                         <div class="flex justify-end px-4">
-                            <input type="submit" class="px-2.5 py-1.5 rounded-md text-white text-sm bg-blue-600" value="Comment">
+                            <input type="submit" class="px-2.5 py-1.5 rounded-md text-white text-sm bg-black" value="Comment">
                         </div>
                     </form>
                 </div>
