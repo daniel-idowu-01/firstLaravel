@@ -71,9 +71,7 @@
                                         <textarea name="content" 
                                                 class="w-full bg-gray-100 rounded border p-2"
                                                 placeholder="Write your reply..."></textarea>
-                                        <button type="submit" class="mt-2 px-4 py-1 bg-blue-500 text-white rounded">
-                                            Submit Reply
-                                        </button>
+                                                <input type="submit" class="px-2.5 py-1.5 rounded-md text-white text-sm bg-blue-600" value="Reply">
                                     </form>
                                     
                                     <!-- Nested Replies -->
