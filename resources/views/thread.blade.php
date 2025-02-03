@@ -97,7 +97,7 @@
                     @endif
 
                     {{-- add comment box --}}
-                    <form action="/thread/{{ $thread->id }}/comment" method="POST" class="bg-white rounded-lg border p-2 mx-auto mt-20">
+                    <form action="/thread/{{ $thread->id }}/comment" method="POST" class="bg-white rounded-lg border p-2 mx-auto">
                         @csrf 
                         <div class="px-3 mb-2 mt-2">
                             <textarea name="content" placeholder="comment" class="w-full bg-gray-100 rounded border border-gray-400 leading-normal resize-none h-20 py-2 px-3 font-medium placeholder-gray-700 focus:outline-none focus:bg-white"></textarea>
