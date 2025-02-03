@@ -48,7 +48,7 @@
                 {{-- comments --}}
                 <div>
                     <p class="opacity-40">comments</p>
-                    @if($comments) 
+                    @if($comments->isNotEmpty()) 
                         @foreach($comments as $comment)
                             <div class="p-3">
                                 <div class="flex gap-3 items-center">
