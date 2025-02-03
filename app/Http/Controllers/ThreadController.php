@@ -41,7 +41,11 @@ class ThreadController extends Controller
     // get thread
     public function showThread(Thread $thread)
     {
-        return view('thread', ['thread' => $thread]);
+        $comments = $thread->comments()->with(['user', 'parent'])->get();
+        return view('thread', [
+            'thread' => $thread,
+            'comments' => $comments
+        ]);
     }
 
     // update thread

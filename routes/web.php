@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ThreadController;
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ResetPasswordController;
 use App\Http\Controllers\ForgetPasswordController;
 
@@ -62,6 +63,9 @@ Route::get('/thread/{thread}', [ThreadController::class, 'showThread']);
 Route::put('/edit-thread/{thread}', [ThreadController::class, 'updateThread']);
 Route::delete('/delete-thread/{thread}', [ThreadController::class, 'deleteThread']);
 Route::post('/upload', [ThreadController::class, 'uploadImage'])->name('threads.upload');
+
+// comment routes
+Route::post('/thread/{thread}/comment', [CommentController::class, 'createComment']);
 
 // 
 Route::middleware([

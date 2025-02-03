@@ -1,6 +1,6 @@
 
     <x-app-layout>
-        <main class="flex flex-col gap-5">
+        <main class="flex flex-col mb-40">
             <span class="mb-10"></span>
             <section  class="mx-auto w-1/2 p-5 rounded-xl">
                 <article class="flex justify-between items-center mb-3">
@@ -31,6 +31,8 @@
                         >
                     @endif
                 </div>
+
+                {{-- edit & delete --}}
                 <div class="flex items-center justify-end gap-4 mt-2">
                     <a href="/edit-thread/{{$thread->id}}" class="underline">Edit</a>
                     <form action="/delete-thread/{{$thread->id}}" method="POST">
@@ -40,11 +42,45 @@
                     </form>
                     <a href="/" class="underline">Back</a>
                 </div>
+
+                <hr class=" my-2 mx-auto bg-black bg-opacity-5 h-0.5" />
+
+                {{-- comments --}}
+                <div>
+                    <p class="opacity-40">comments</p>
+                    @if($comments) 
+                        @foreach($comments as $comment)
+                            <div class="p-3">
+                                <div class="flex gap-3 items-center">
+                                    <img src="{{ $comment->user->profile_photo_path ?? 'https://img.freepik.com/vecteurs-premium/icones-utilisateur-comprend-icones-utilisateur-symboles-icones-personnes-elements-conception-graphique-qualite-superieure_981536-526.jpg' }}"
+                                            class="object-cover w-10 h-10 rounded-full border-2 border-emerald-400  shadow-emerald-400">
+                                    <h3 class="font-bold">
+                                        {{ $comment->user->name }}
+                                    </h3>
+                                </div>
+                                <p class="text-gray-600 mt-2">
+                                    {{ $comment->content }}
+                                </p>
+                                <button class="text-right text-blue-500">Reply</button>
+                            </div>
+                        @endforeach
+                    @else
+                        <p class="text-gray-600 mt-2">No comments</p>
+                    @endif
+
+                    {{-- add comment box --}}
+                    <form action="/thread/{{ $thread->id }}/comment" method="POST" class="bg-white rounded-lg border p-2 mx-auto mt-20">
+                        @csrf 
+                        <div class="px-3 mb-2 mt-2">
+                            <textarea name="content" placeholder="comment" class="w-full bg-gray-100 rounded border border-gray-400 leading-normal resize-none h-20 py-2 px-3 font-medium placeholder-gray-700 focus:outline-none focus:bg-white"></textarea>
+                        </div>
+                        <div class="flex justify-end px-4">
+                            <input type="submit" class="px-2.5 py-1.5 rounded-md text-white text-sm bg-blue-600" value="Comment">
+                        </div>
+                    </form>
+                </div>
             </section>
-
-            <hr class="w-1/2 mx-auto bg-black bg-opacity-5 h-0.5" />
         </main>
-
 
         {{-- Fullscreen Container --}}
         <div 
