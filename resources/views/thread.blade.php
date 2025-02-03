@@ -54,7 +54,7 @@
                                 <div class="p-3">
                                     <div class="flex gap-3 items-center">
                                         <img src="{{ $comment->user->profile_photo_path ?? 'https://img.freepik.com/vecteurs-premium/icones-utilisateur-comprend-icones-utilisateur-symboles-icones-personnes-elements-conception-graphique-qualite-superieure_981536-526.jpg' }}"
-                                            class="object-cover w-10 h-10 rounded-full border-2 border-emerald-400">
+                                            class="object-cover w-5 h-5 rounded-full border-2 border-emerald-400">
                                         <h3 class="font-bold">{{ $comment->user->name }}</h3>
                                     </div>
                                     <p class="text-gray-600 mt-2">{{ $comment->content }}</p>
@@ -79,9 +79,9 @@
                                         <div class="ml-8 mt-4">
                                             @foreach($comment->replies as $reply)
                                                 <div class="p-3 border-l-2">
-                                                    <div class="flex gap-3 items-center">
+                                                    <div class="flex gap-2 items-center">
                                                         <img src="{{ $reply->user->profile_photo_path ?? 'https://img.freepik.com/vecteurs-premium/icones-utilisateur-comprend-icones-utilisateur-symboles-icones-personnes-elements-conception-graphique-qualite-superieure_981536-526.jpg' }}"
-                                                            class="object-cover w-8 h-8 rounded-full border-2 border-emerald-400">
+                                                            class="object-cover w-5 h-5 rounded-full border-2 border-emerald-400">
                                                         <h3 class="font-bold">{{ $reply->user->name }}</h3>
                                                     </div>
                                                     <p class="text-gray-600 mt-2">{{ $reply->content }}</p>
