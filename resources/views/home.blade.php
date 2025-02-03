@@ -6,7 +6,7 @@
             <article class="flex justify-between items-center mb-3">
                 <div class="flex items-center gap-2">
                     <img class="w-5 h-5 object-cover rounded-[100%]" 
-                        src="{{ $user->profile_photo_path ?? 'https://img.freepik.com/vecteurs-premium/icones-utilisateur-comprend-icones-utilisateur-symboles-icones-personnes-elements-conception-graphique-qualite-superieure_981536-526.jpg' }}" alt="">
+                        src="{{ $thread->user->profile_photo_path ?? 'https://img.freepik.com/vecteurs-premium/icones-utilisateur-comprend-icones-utilisateur-symboles-icones-personnes-elements-conception-graphique-qualite-superieure_981536-526.jpg' }}" alt="">
                     <p>{{$thread->user->name}}</p>
                     <p class="opacity-50 text-xs"><span>o</span> {{$thread->created_at->diffForHumans()}}</p>
                 </div>
@@ -47,11 +47,13 @@
     </main>
     
     {{-- route to create thread --}}
-    <a href="/create-thread" class="fixed bottom-5 right-5 bg-black text-white p-3 rounded-[100%] hover:bg-opacity-80">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"/>
-        </svg>
-    </a>
+    @auth
+        <a href="/create-thread" class="fixed bottom-5 right-5 bg-black text-white p-3 rounded-[100%] hover:bg-opacity-80">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"/>
+            </svg>
+        </a>
+    @endauth
 
     {{-- Fullscreen Container --}}
     <div 
