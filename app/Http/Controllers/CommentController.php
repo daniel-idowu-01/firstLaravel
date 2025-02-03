@@ -10,7 +10,8 @@ class CommentController extends Controller
     public function createComment(Request $request, Thread $thread)
     {
         $validated = $request->validate([
-            'content' => 'required|min:3'
+            'content' => 'required|min:3',
+            'parent_id' => 'nullable|exists:comments,id'
         ]);
 
         $comment = $thread->comments()->create([
